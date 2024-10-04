@@ -3,6 +3,7 @@ package com.cse5236.headsUpStudy
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,7 +20,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        val howToButton = findViewById<Button>(R.id.how_button)
+        howToButton.setOnClickListener{
+            val dialog = HowToPlayFragment()
+
+            dialog.show(supportFragmentManager, "customDialog")
+        }
     }
+
+
 
     override fun onStart() {
         super.onStart()
