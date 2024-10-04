@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity() {
 
             dialog.show(supportFragmentManager, "customDialog")
         }
+        val categoriesButton = findViewById<Button>(R.id.categories_button)
+        categoriesButton.setOnClickListener {
+            val intent = Intent(this, CategoriesActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
