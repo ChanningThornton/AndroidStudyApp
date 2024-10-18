@@ -3,12 +3,17 @@ package com.cse5236.headsUpStudy
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var loginButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homepage)
@@ -16,35 +21,57 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "onCreate called")
 
         val loginButton = findViewById<Button>(R.id.login_button)
-        loginButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
+        loginButton.setOnClickListener (this)
 
         val howToButton = findViewById<Button>(R.id.how_button)
-        howToButton.setOnClickListener{
-            val dialog = HowToPlayFragment()
+        howToButton.setOnClickListener(this)
 
-            dialog.show(supportFragmentManager, "customDialog")
-        }
         val categoriesButton = findViewById<Button>(R.id.categories_button)
-        categoriesButton.setOnClickListener {
-            val intent = Intent(this, CategoriesActivity::class.java)
-            startActivity(intent)
-        }
+        categoriesButton.setOnClickListener(this)
 
         val newGameButton = findViewById<Button>(R.id.newGame_button)
-        newGameButton.setOnClickListener {
-            val intent = Intent(this, NewGameActivity::class.java)
-            startActivity(intent)
-        }
+        newGameButton.setOnClickListener(this)
 
     }
 
+    override fun onClick(v: View?){
+        when (v?.id) {
+            R.id.login_button -> {
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                if(currentUser != null){
+                    FirebaseAuth.getInstance().signOut()
+                    loginButton.text = "Login"
+                } else {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            R.id.how_button -> {
+                val dialog = HowToPlayFragment()
 
+                dialog.show(supportFragmentManager, "customDialog")
+            }
+            R.id.categories_button -> {
+                val intent = Intent(this, CategoriesActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.newGame_button -> {
+                val intent = Intent(this, NewGameActivity::class.java)
+                startActivity(intent)
+            }
+            else -> Log.e("LoginActivity", "Error: Invalid button press")
+        }
+    }
 
     override fun onStart() {
         super.onStart()
+        loginButton = findViewById(R.id.login_button)
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if(currentUser != null) {
+            loginButton.text = "Logout"
+        } else {
+            loginButton.text = "Login"
+        }
         Log.d("MainActivity", "onStart called")
     }
 
