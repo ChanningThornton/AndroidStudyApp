@@ -12,8 +12,6 @@ import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var loginButton: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homepage)
@@ -32,6 +30,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val newGameButton = findViewById<Button>(R.id.newGame_button)
         newGameButton.setOnClickListener(this)
 
+        FirebaseAuth.getInstance().addAuthStateListener { firebaseAuth ->
+            if(firebaseAuth.currentUser != null){
+                loginButton.text = "Logout"
+            } else {
+                loginButton.text = "Login"
+            }
+        }
+
     }
 
     override fun onClick(v: View?){
@@ -40,7 +46,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val currentUser = FirebaseAuth.getInstance().currentUser
                 if(currentUser != null){
                     FirebaseAuth.getInstance().signOut()
-                    loginButton.text = "Login"
                 } else {
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
@@ -65,13 +70,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
-        loginButton = findViewById(R.id.login_button)
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if(currentUser != null) {
-            loginButton.text = "Logout"
-        } else {
-            loginButton.text = "Login"
-        }
         Log.d("MainActivity", "onStart called")
     }
 

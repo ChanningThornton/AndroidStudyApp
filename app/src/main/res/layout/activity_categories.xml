@@ -28,75 +28,90 @@
         android:layout_margin="16dp" />
 
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:id="@+id/gridLayout"
+        android:layout_width="365dp"
+        android:layout_height="279dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/header_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:columnCount="2"
         android:rowCount="5"
-        android:columnCount="2">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_text"
+        app:layout_constraintVertical_bias="0.055">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Data Structures"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Data Structures" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Algorithms"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Algorithms" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Operating Systems"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Operating Systems" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Languages"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Languages" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category5"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Category5" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category6"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Category6" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category7"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Category7" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category8"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Category8" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category9"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Category9" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category10"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:text="Category10" />
 
     </GridLayout>
+
+    <Button
+        android:id="@+id/newCat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.138" />
 </androidx.constraintlayout.widget.ConstraintLayout>
