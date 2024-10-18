@@ -33,6 +33,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 val email = findViewById<EditText>(R.id.editTextUsername)
                 val password = findViewById<EditText>(R.id.editTextTextPassword)
                 signUpViewModel.signUp(email.text.toString(), password.text.toString())
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             else -> Log.e("LoginActivity", "Error: Invalid button press")
         }

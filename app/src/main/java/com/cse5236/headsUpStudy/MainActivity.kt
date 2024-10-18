@@ -6,9 +6,14 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var loginButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homepage)
@@ -32,8 +37,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?){
         when (v?.id) {
             R.id.login_button -> {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                if(currentUser != null){
+                    FirebaseAuth.getInstance().signOut()
+                    loginButton.text = "Login"
+                } else {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
             }
             R.id.how_button -> {
                 val dialog = HowToPlayFragment()
@@ -54,6 +65,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
+        loginButton = findViewById(R.id.login_button)
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if(currentUser != null) {
+            loginButton.text = "Logout"
+        } else {
+            loginButton.text = "Login"
+        }
         Log.d("MainActivity", "onStart called")
     }
 
