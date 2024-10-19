@@ -51,7 +51,7 @@ class NewCategoryActivity : AppCompatActivity(), OnClickListener {
                 val name = findViewById<EditText>(R.id.category_name).text.toString()
                 val words = newCategoryViewModel.words.value ?: emptyList()
                 if(name.isNotEmpty() && words.isNotEmpty()){
-                    newCategoryViewModel.saveCategory(name,words, this)
+                    newCategoryViewModel.saveCategory(name, this)
                     val intent = Intent(this, CategoriesActivity::class.java)
                     startActivity(intent)
                 } else {

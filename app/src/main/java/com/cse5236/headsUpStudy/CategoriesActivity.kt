@@ -25,7 +25,8 @@ class CategoriesActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?){
         when (v?.id) {
             R.id.back_button -> {
-                finish()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             R.id.newCat_button -> {
                 val currentUser = FirebaseAuth.getInstance().currentUser

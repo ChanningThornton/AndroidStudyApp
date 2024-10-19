@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HeadsUpStudy"
         tools:targetApi="31">
         <activity
+            android:name=".EditCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewCategoryActivity"
             android:exported="false" />
         <activity

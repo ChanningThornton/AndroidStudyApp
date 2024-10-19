@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class WordsAdapter(private val viewModel: NewCategoryViewModel) :
+class WordsAdapter(private val viewModel: CategoryViewModel) :
     RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
         private var wordsList: List<String> = listOf()

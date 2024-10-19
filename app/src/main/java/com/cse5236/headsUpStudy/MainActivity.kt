@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val newGameButton = findViewById<Button>(R.id.newGame_button)
         newGameButton.setOnClickListener(this)
 
+        val tempButton = findViewById<Button>(R.id.temp_button)
+        tempButton.setOnClickListener(this)
+
         FirebaseAuth.getInstance().addAuthStateListener { firebaseAuth ->
             if(firebaseAuth.currentUser != null){
                 loginButton.text = "Logout"
@@ -63,6 +66,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.newGame_button -> {
                 val intent = Intent(this, NewGameActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.temp_button -> {
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                if(currentUser != null) {
+                    val intent = Intent(this, EditCategoryActivity::class.java)
+                    startActivity(intent)
+                }
             }
             else -> Log.e("LoginActivity", "Error: Invalid button press")
         }
