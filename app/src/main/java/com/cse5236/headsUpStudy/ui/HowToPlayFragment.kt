@@ -1,4 +1,4 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
+import com.cse5236.headsUpStudy.R
 
 class HowToPlayFragment: DialogFragment() {
 

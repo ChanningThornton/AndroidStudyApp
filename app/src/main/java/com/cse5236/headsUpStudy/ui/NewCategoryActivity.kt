@@ -1,4 +1,4 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +12,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.firestore
+import com.cse5236.headsUpStudy.ModelView.NewCategoryViewModel
+import com.cse5236.headsUpStudy.ModelView.WordsAdapter
+import com.cse5236.headsUpStudy.R
 
 class NewCategoryActivity : AppCompatActivity(), OnClickListener {
     private val newCategoryViewModel: NewCategoryViewModel by viewModels()
@@ -51,7 +51,7 @@ class NewCategoryActivity : AppCompatActivity(), OnClickListener {
                 val name = findViewById<EditText>(R.id.category_name).text.toString()
                 val words = newCategoryViewModel.words.value ?: emptyList()
                 if(name.isNotEmpty() && words.isNotEmpty()){
-                    newCategoryViewModel.saveCategory(name,words, this)
+                    newCategoryViewModel.saveCategory(name, this)
                     val intent = Intent(this, CategoriesActivity::class.java)
                     startActivity(intent)
                 } else {

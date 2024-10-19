@@ -1,12 +1,12 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.cse5236.headsUpStudy.R
 import com.google.firebase.auth.FirebaseAuth
 
 class CategoriesActivity : AppCompatActivity(), View.OnClickListener {
@@ -25,7 +25,8 @@ class CategoriesActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?){
         when (v?.id) {
             R.id.back_button -> {
-                finish()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             R.id.newCat_button -> {
                 val currentUser = FirebaseAuth.getInstance().currentUser

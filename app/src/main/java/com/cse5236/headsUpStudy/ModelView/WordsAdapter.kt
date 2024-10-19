@@ -1,4 +1,4 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ModelView
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cse5236.headsUpStudy.R
 
-class WordsAdapter(private val viewModel: NewCategoryViewModel) :
+class WordsAdapter(private val viewModel: CategoryViewModel) :
     RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
         private var wordsList: List<String> = listOf()
