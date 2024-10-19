@@ -1,14 +1,11 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ModelView
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.google.firebase.Firebase
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 
 class EditCategoryViewModel : ViewModel(), CategoryViewModel {

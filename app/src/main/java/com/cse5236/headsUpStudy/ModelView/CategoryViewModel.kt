@@ -1,4 +1,4 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ModelView
 
 interface CategoryViewModel {
     fun deleteWord(word: String)

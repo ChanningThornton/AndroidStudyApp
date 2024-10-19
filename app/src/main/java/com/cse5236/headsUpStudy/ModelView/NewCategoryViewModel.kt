@@ -1,8 +1,7 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ModelView
 
 import android.content.Context
 import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase

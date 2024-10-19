@@ -1,4 +1,4 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,11 +6,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.cse5236.headsUpStudy.ModelView.LoginViewModel
+import com.cse5236.headsUpStudy.R
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private val loginViewModel: LoginViewModel by viewModels()

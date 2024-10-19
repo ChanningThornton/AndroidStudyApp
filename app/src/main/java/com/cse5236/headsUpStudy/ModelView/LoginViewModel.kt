@@ -1,4 +1,4 @@
-package com.cse5236.headsUpStudy
+package com.cse5236.headsUpStudy.ModelView
 
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
