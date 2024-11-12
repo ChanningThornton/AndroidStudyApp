@@ -5,16 +5,46 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.cse5236.headsUpStudy.ModelView.CategoriesViewModel
+import com.cse5236.headsUpStudy.ModelView.CategoryAdapter
 import com.cse5236.headsUpStudy.R
 import com.google.firebase.auth.FirebaseAuth
 
 class CategoriesActivity : AppCompatActivity(), View.OnClickListener {
+    private val categoriesViewModel: CategoriesViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
         Log.d("CategoriesActivity", "onCreate called")
+
+        val recyclerView = findViewById<RecyclerView>(R.id.categories_table)
+        val adapter = CategoryAdapter(categoriesViewModel)
+        recyclerView.layoutManager = GridLayoutManager(this,2)
+        recyclerView.adapter = adapter
+
+        adapter.setOnClickListener(object : CategoryAdapter.OnClickListener{
+            override fun onClick(position: Int, id: String) {
+                val intent = Intent(this@CategoriesActivity, EditCategoryActivity::class.java)
+                intent.putExtra("CATEGORY_ID", id)
+                startActivity(intent)
+            }
+
+        })
+
+        categoriesViewModel.categories.observe(this) { categoryList ->
+            adapter.updateCategories(categoryList)
+        }
+
+        FirebaseAuth.getInstance().currentUser?.uid?.let {
+            categoriesViewModel.loadCategory(it)
+        }
+
 
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener(this)

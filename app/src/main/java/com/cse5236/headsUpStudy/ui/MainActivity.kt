@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cse5236.headsUpStudy.R
 import com.google.firebase.auth.FirebaseAuth
@@ -30,8 +31,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val newGameButton = findViewById<Button>(R.id.newGame_button)
         newGameButton.setOnClickListener(this)
 
-        val tempButton = findViewById<Button>(R.id.temp_button)
-        tempButton.setOnClickListener(this)
 
         FirebaseAuth.getInstance().addAuthStateListener { firebaseAuth ->
             if(firebaseAuth.currentUser != null){
@@ -67,13 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this, NewGameActivity::class.java)
                 startActivity(intent)
             }
-            R.id.temp_button -> {
-                val currentUser = FirebaseAuth.getInstance().currentUser
-                if(currentUser != null) {
-                    val intent = Intent(this, EditCategoryActivity::class.java)
-                    startActivity(intent)
-                }
-            }
+
             else -> Log.e("LoginActivity", "Error: Invalid button press")
         }
     }

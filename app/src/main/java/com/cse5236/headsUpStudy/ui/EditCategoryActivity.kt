@@ -24,6 +24,8 @@ class EditCategoryActivity : AppCompatActivity(), OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_category)
 
+        val categoryId = intent.getStringExtra("CATEGORY_ID")
+
         val recyclerView = findViewById<RecyclerView>(R.id.word_table)
         val adapter = WordsAdapter(editCategoryViewModel)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -38,9 +40,7 @@ class EditCategoryActivity : AppCompatActivity(), OnClickListener {
             categoryName.setText(name)
         }
 
-        FirebaseAuth.getInstance().currentUser?.uid?.let {
-            editCategoryViewModel.loadCategory(it)
-        }
+        editCategoryViewModel.loadCategory(categoryId)
 
 
         val newButton = findViewById<Button>(R.id.add_button)
