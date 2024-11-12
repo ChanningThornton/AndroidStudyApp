@@ -31,22 +31,18 @@ class EditCategoryViewModel : ViewModel(), CategoryViewModel {
         }
     }
 
-    fun loadCategory(uid: String){
+    fun loadCategory(id: String?){
         Firebase.firestore.collection("categories")
-            .whereEqualTo("userId", uid)
-            .limit(1)
+            .document(id ?: "")
             .get()
             .addOnSuccessListener { item ->
-                if(!item.isEmpty) {
-                    val category = item.first()
+                    val category = item
                     docName = category.id
                     val words = category.get("words") as? List<String>
                     val name = category.getString("name")
                     _words.value = words?.toMutableList()
                     _categoryName.value = name
-                } else {
-                    _words.value = mutableListOf()
-                }
+
             }
     }
 

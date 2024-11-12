@@ -28,6 +28,15 @@ class CategoriesActivity : AppCompatActivity(), View.OnClickListener {
         recyclerView.layoutManager = GridLayoutManager(this,2)
         recyclerView.adapter = adapter
 
+        adapter.setOnClickListener(object : CategoryAdapter.OnClickListener{
+            override fun onClick(position: Int, id: String) {
+                val intent = Intent(this@CategoriesActivity, EditCategoryActivity::class.java)
+                intent.putExtra("CATEGORY_ID", id)
+                startActivity(intent)
+            }
+
+        })
+
         categoriesViewModel.categories.observe(this) { categoryList ->
             adapter.updateCategories(categoryList)
         }

@@ -2,6 +2,7 @@ package com.cse5236.headsUpStudy.ModelView
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ class CategoryAdapter(private val viewModel: CategoriesViewModel) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
         private var categoryList: List<Pair<String, String>> = listOf()
+    private var onClickListener: OnClickListener? = null
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val categoryButton = view.findViewById<Button>(R.id.category_button)
@@ -27,12 +29,25 @@ class CategoryAdapter(private val viewModel: CategoriesViewModel) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.categoryButton.text = categoryList[position].second
+        val category = categoryList[position]
+        holder.categoryButton.text = category.second
+
+        holder.categoryButton.setOnClickListener{
+            onClickListener?.onClick(position, category.first)
+        }
     }
 
     fun updateCategories(categories: List<Pair<String, String>>){
         categoryList = categories
         notifyDataSetChanged()
+    }
+
+    fun setOnClickListener(listener: OnClickListener?){
+        this.onClickListener = listener
+    }
+
+    interface OnClickListener {
+        fun onClick(position: Int, id: String)
     }
 
 }
