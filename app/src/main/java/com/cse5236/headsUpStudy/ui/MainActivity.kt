@@ -63,8 +63,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.newGame_button -> {
-                val intent = Intent(this, NewGameActivity::class.java)
-                startActivity(intent)
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                if(currentUser != null){
+                    val intent = Intent(this, NewGameActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
             }
 
             else -> Log.e("LoginActivity", "Error: Invalid button press")
