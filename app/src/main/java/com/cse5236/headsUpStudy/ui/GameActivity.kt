@@ -23,6 +23,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.cse5236.headsUpStudy.ModelView.GameViewModel
 import com.cse5236.headsUpStudy.R
 import com.cse5236.headsUpStudy.game.Game
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListener {
     private val gameViewModel: GameViewModel by viewModels()
@@ -34,6 +36,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private lateinit var backGround: View
     private var resetTilt: Boolean = true
     private lateinit var gameTimer: CountDownTimer
+    private var streak: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -45,15 +48,18 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         timerText = findViewById<TextView>(R.id.game_time)
         backGround = findViewById(R.id.main)
 
-        gameViewModel.words.observe(this) { words ->
-            if(words.isNotEmpty()) {
-                game = Game(categoryId ?: "", words)
-                game.startGame()
-                displayWord(true)
+        gameViewModel.streak.observe(this) { streak ->
+            gameViewModel.words.observe(this) { words ->
+                if (words.isNotEmpty()) {
+                    game = Game(categoryId ?: "", words, streak)
+                    game.startGame()
+                    displayWord(true)
+                }
             }
+            gameViewModel.loadCategory(categoryId)
         }
+        gameViewModel.getStreak(FirebaseAuth.getInstance().currentUser?.uid ?: "")
 
-        gameViewModel.loadCategory(categoryId)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -92,7 +98,18 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     }
 
     private fun displayWord(isSkipped: Boolean){
-        wordText.text = game.nextCard(isSkipped)?.word ?: "End of Words"
+        if(this::game.isInitialized){
+            val nextCard = game.nextCard(isSkipped)
+            if(nextCard == null){
+                wordText.text = "Out of Words!"
+                streak = game.getStreak()
+                gameViewModel.updateStreak(FirebaseAuth.getInstance().currentUser?.uid ?: "", streak)
+                Log.d("Streak", "$streak")
+                game.test()
+            } else {
+                wordText.text = nextCard.word
+            }
+        }
     }
 
     override fun onClick(v: View?) {

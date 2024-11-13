@@ -1,20 +1,43 @@
 package com.cse5236.headsUpStudy.game
 
-class Game(private val categoryId: String, private val words: List<String>) {
+import android.util.Log
+
+class Game(private val categoryId: String, private val words: List<String>, private var streak: Int) {
     private var index = -1;
     private val cards = words.map{ Card(it) }
+    private var lastCardTime: Long = 0
 
     fun startGame(){
-        //TODO
+        lastCardTime = System.currentTimeMillis()
     }
 
     fun nextCard(isSkipped: Boolean): Card? {
-        if(index != -1) cards[index].wasSkipped = isSkipped
+        if(index != -1) {
+            cards[index].wasSkipped = isSkipped
+            if(isSkipped){
+                streak = 0
+            } else {
+                streak++
+            }
+            val currentTime = System.currentTimeMillis()
+            cards[index].timeTaken = currentTime - lastCardTime
+            lastCardTime = currentTime
+        }
         if(index + 1 < cards.size) {
             index++;
             return cards[index]
         }
         return null
+    }
+
+    fun getStreak(): Int{
+        return streak
+    }
+
+    fun test(){
+        for(card in cards){
+            Log.d(card.word, "${card.timeTaken}")
+        }
     }
 
  }
