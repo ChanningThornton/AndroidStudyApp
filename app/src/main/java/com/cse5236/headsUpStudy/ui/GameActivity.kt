@@ -83,9 +83,15 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
              override fun onFinish() {
                  //TODO Should send to game end screen
-                 val intent = Intent(this@GameActivity, NewGameActivity::class.java)
+                /* val intent = Intent(this@GameActivity, NewGameActivity::class.java)
+                 startActivity(intent)
+                 finish()*/
+                 val intent = Intent(this@GameActivity, ScoreActivity::class.java)
+                 intent.putExtra("SCORE", streak)
                  startActivity(intent)
                  finish()
+
+
              }
 
          }
