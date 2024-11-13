@@ -60,7 +60,13 @@ class NewGameActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.start_button -> {
-
+                val intent = Intent(this, GameActivity::class.java)
+                val categoryPosition = findViewById<Spinner>(R.id.category_dropdown).selectedItemPosition
+                val categoryId = categoriesViewModel.categories.value?.get(categoryPosition)?.first
+                val timeLimit = findViewById<Spinner>(R.id.time_dropdown).selectedItem.toString()
+                intent.putExtra("CATEGORY_ID", categoryId)
+                intent.putExtra("TIME_LIMIT", timeLimit)
+                startActivity(intent)
             }
         }
     }
