@@ -13,12 +13,12 @@ class ScoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score)
 
-        val score = intent.getIntExtra("SCORE", 0)
+        val score = intent.getStringExtra("SCORE")
         val streak = intent.getIntExtra("STREAK", 0)
         val wordsStatusStrings = intent.getStringArrayListExtra("WORDS_STATUS")
 
         val scoreText = findViewById<TextView>(R.id.score_value)
-        scoreText.text = score.toString()
+        scoreText.text = score
 
         val streakText = findViewById<TextView>(R.id.streak_value)
         streakText.text = streak.toString()
