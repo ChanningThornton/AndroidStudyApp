@@ -2,6 +2,7 @@ package com.cse5236.headsUpStudy.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Debug
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -32,7 +33,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.signup_button -> {
                 val email = findViewById<EditText>(R.id.editTextUsername)
-                val password = findViewById<EditText>(R.id.editTextTextPassword)
+                val password = findViewById<EditText>(R.id.editTextPassword)
                 signUpViewModel.signUp(email.text.toString(), password.text.toString())
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
