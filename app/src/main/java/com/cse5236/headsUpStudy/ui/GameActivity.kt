@@ -113,11 +113,15 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         if(this::game.isInitialized){
             val nextCard = game.nextCard(isSkipped)
             if(nextCard == null){
-                wordText.text = "Out of Words!"
                 streak = game.getStreak()
                 gameViewModel.updateStreak(FirebaseAuth.getInstance().currentUser?.uid ?: "", streak)
-                Log.d("Streak", "$streak")
-                game.test()
+                val score = calculateScore()
+                val intent = Intent(this@GameActivity, ScoreActivity::class.java)
+                intent.putExtra("SCORE", "$score/${game.getNumCards()}")
+                intent.putExtra("STREAK", streak)
+                intent.putStringArrayListExtra("WORDS_STATUS", getWordsStatusAsString())
+                startActivity(intent)
+                finish()
             } else {
                 wordText.text = nextCard.word
             }
