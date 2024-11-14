@@ -14,12 +14,25 @@
         android:text="Your Score:" />
 
     <TextView
+        android:id="@+id/words_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:text="Words Status" />
+    <TextView
         android:id="@+id/score_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="48sp"
         android:text="0" />
-
+    <TextView
+        android:id="@+id/streak_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:text="Streak: 0" />
     <Button
         android:id="@+id/back_button"
         android:layout_width="wrap_content"

@@ -34,6 +34,13 @@ class Game(private val categoryId: String, private val words: List<String>, priv
         return streak
     }
 
+    fun getWordsStatus(): ArrayList<Pair<String, Boolean>> {
+        val wordsStatus = ArrayList<Pair<String, Boolean>>()
+        for (card in cards) {
+            wordsStatus.add(Pair(card.word, card.wasSkipped))
+        }
+        return wordsStatus
+    }
     fun test(){
         for(card in cards){
             Log.d(card.word, "${card.timeTaken}")

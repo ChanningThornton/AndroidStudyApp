@@ -72,7 +72,11 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         backButton.setOnClickListener(this)
 
     }
-
+    //funstion to pull words and their status
+    private fun getWordsStatusAsString(): ArrayList<String> {
+        val wordsStatus = game.getWordsStatus()
+        return ArrayList(wordsStatus.map { "${it.first}:${it.second}" })
+    }
     private fun timer(timeLimit: Long) {
          gameTimer = object : CountDownTimer(timeLimit, 1000) {
              override fun onTick(millisUntilFinished: Long) {
@@ -82,12 +86,11 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
              }
 
              override fun onFinish() {
-                 //TODO Should send to game end screen
-                /* val intent = Intent(this@GameActivity, NewGameActivity::class.java)
-                 startActivity(intent)
-                 finish()*/
+                 val score = calculateScore()
                  val intent = Intent(this@GameActivity, ScoreActivity::class.java)
-                 intent.putExtra("SCORE", streak)
+                 intent.putExtra("SCORE", score)
+                 intent.putExtra("STREAK", streak)
+                 intent.putStringArrayListExtra("WORDS_STATUS", getWordsStatusAsString())
                  startActivity(intent)
                  finish()
 
@@ -97,7 +100,10 @@ class GameActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
          }
         gameTimer.start()
     }
+    private fun calculateScore(): Int {
 
+        return game.getWordsStatus().count { !it.second }
+    }
     private fun convertTime(timeLimit: String): Long {
         val minSec = timeLimit.split(":")
         return (minSec[0].toLong() * 60 + minSec[1].toLong()) * 1000
