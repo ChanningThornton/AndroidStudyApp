@@ -11,7 +11,7 @@
         android:id="@+id/game_word"
         android:layout_width="462dp"
         android:layout_height="153dp"
-        android:text="TextView"
+        android:text="@string/gameWord"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Back"
+        android:text="@string/gameBackButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
         android:layout_width="159dp"
         android:layout_height="58dp"
         android:layout_marginBottom="40dp"
-        android:text="00:00"
+        android:text="@string/_00_00"
         android:textAlignment="center"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/game_word"

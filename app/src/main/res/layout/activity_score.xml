@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="Your Score:" />
+        android:text="@string/scoreText" />
 
     <TextView
         android:id="@+id/words_status"
@@ -19,29 +19,29 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginTop="16dp"
-        android:text="Words Status" />
+        android:text="@string/wordsStatus" />
     <TextView
         android:id="@+id/streak_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_marginTop="16dp"
-        android:text="Your Streak:" />
+        android:text="@string/streak_text" />
     <TextView
         android:id="@+id/score_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="48sp"
-        android:text="0" />
+        android:text="@string/score_value" />
     <TextView
         android:id="@+id/streak_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="48sp"
-        android:text="0" />
+        android:text="@string/streak_value" />
     <Button
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to Main Menu" />
+        android:text="@string/back_button" />
 </LinearLayout>
