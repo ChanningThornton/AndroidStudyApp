@@ -1,4 +1,5 @@
 <resources>
+    <string name="logout_button">Logout</string>
     <string name="app_name">Heads Up Study</string>
     <string name="backButton">Back</string>
     <string name="headerText">Categories</string>

@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         FirebaseAuth.getInstance().addAuthStateListener { firebaseAuth ->
             if(firebaseAuth.currentUser != null){
-                loginButton.text = "Logout"
+                loginButton.text = getString(R.string.logout_button);
             } else {
-                loginButton.text = "Login"
+                loginButton.text = getString(R.string.login_button);
             }
         }
 

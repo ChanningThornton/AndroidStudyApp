@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="logout_button">cerrar sesión</string>
     <string name="app_name">Heads Up Study</string>
     <string name="backButton">Volver</string>
     <string name="headerText">Categorías</string>
