@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class NewGameActivity : AppCompatActivity(), View.OnClickListener {
     private val categoriesViewModel: CategoriesViewModel by viewModels()
+    private var selectedTimePosition: Int = 0
+    private var selectedCategoryPosition: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +39,11 @@ class NewGameActivity : AppCompatActivity(), View.OnClickListener {
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categoryList)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             categorySpinner.adapter = adapter
+
+            categorySpinner.setSelection(selectedCategoryPosition)
         }
+
+        timeSpinner.setSelection(selectedTimePosition)
 
         FirebaseAuth.getInstance().currentUser?.uid?.let {
             categoriesViewModel.loadCategory(it)
@@ -75,30 +81,19 @@ class NewGameActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d("NewGameActivity", "onStart called")
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val timeSpinner = findViewById<Spinner>(R.id.time_dropdown)
+        val categorySpinner = findViewById<Spinner>(R.id.category_dropdown)
+
+        outState.putInt("TIME_POSITION", timeSpinner.selectedItemPosition)
+        outState.putInt("CATEGORY_POSITION", categorySpinner.selectedItemPosition)
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("NewGameActivity", "onResume called")
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        selectedTimePosition = savedInstanceState.getInt("TIME_POSITION", 0)
+        selectedCategoryPosition = savedInstanceState.getInt("CATEGORY_POSITION", 0)
     }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("NewGameActivity", "onPause called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("NewGameActivity", "onStop called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("NewGameActivity", "onDestroy called")
-    }
-
-
 }

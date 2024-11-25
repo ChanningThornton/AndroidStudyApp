@@ -2,6 +2,7 @@ package com.cse5236.headsUpStudy.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Debug
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -40,6 +41,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.login_button -> {
                 val email = findViewById<EditText>(R.id.editTextUsername)
                 val password = findViewById<EditText>(R.id.editTextTextPassword)
+                Log.d("login", email.text.toString());
                 loginViewModel.login(email.text.toString(), password.text.toString())
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -47,30 +49,4 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             else -> Log.e("LoginActivity", "Error: Invalid button press")
         }
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("LoginActivity", "onStart called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("LoginActivity", "onResume called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("LoginActivity", "onPause called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("LoginActivity", "onStop called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("LoginActivity", "onDestroy called")
-    }
-
 }
