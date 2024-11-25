@@ -5,12 +5,15 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
 class EditCategoryViewModel : ViewModel(), CategoryViewModel {
+    private val repository = FirebaseRepository
     private val _words = MutableLiveData<MutableList<String>>(mutableListOf())
     val words: MutableLiveData<MutableList<String>> get() = _words
+
 
     private val _categoryName = MutableLiveData<String>()
     val categoryName: LiveData<String> get() = _categoryName
@@ -32,18 +35,12 @@ class EditCategoryViewModel : ViewModel(), CategoryViewModel {
     }
 
     fun loadCategory(id: String?){
-        Firebase.firestore.collection("categories")
-            .document(id ?: "")
-            .get()
-            .addOnSuccessListener { item ->
-                    val category = item
-                    docName = category.id
-                    val words = category.get("words") as? List<String>
-                    val name = category.getString("name")
-                    _words.value = words?.toMutableList()
-                    _categoryName.value = name
-
-            }
+        val document = repository.getCategory(id ?: "")
+        docName = document?.id ?: "";
+        val words = document?.get("words") as? List<String>
+        val name = document?.getString("name")
+        _words.value = words?.toMutableList()
+        _categoryName.value = name
     }
 
     fun updateCategory(name: String, context: Context){
@@ -52,6 +49,7 @@ class EditCategoryViewModel : ViewModel(), CategoryViewModel {
         document.update("name", name)
         document.update("words", words.value)
             .addOnSuccessListener {
+                repository.loadCategories()
                 Toast.makeText(context, "Category updated.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
@@ -63,6 +61,7 @@ class EditCategoryViewModel : ViewModel(), CategoryViewModel {
         Firebase.firestore.collection("categories")
             .document(docName).delete()
             .addOnSuccessListener {
+                repository.loadCategories()
                 Toast.makeText(context, "Category deleted.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
