@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Heads Up Study</string>
+    <string name="backButton">Volver</string>
+    <string name="headerText">Categorías</string>
+    <string name="newCatButton">Nuevo</string>
+    <string name="gameBackButton">Volver</string>
+    <string name="scoreText">Tu Puntuación</string>
+    <string name="wordsStatus">Estado de la Palabra</string>
+    <string name="streak_text">Tu Racha</string>
+    <string name="back_button">Volver al Menú Principal</string>
+    <string name="editCategory_name">Nombre de Categoría</string>
+    <string name="word_input">Ingrese la Palabra</string>
+    <string name="add_button">Agregar</string>
+    <string name="deleteCat_button">Borrar</string>
+    <string name="saveCat_button">Guardar</string>
+    <string name="backbutton">Volver</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="how_to_play">Como Jugar</string>
+    <string name="categories_button">Categorías</string>
+    <string name="newGame_button">Iniciar Juego</string>
+    <string name="game_instructions">"1. Comienza un nuevo juego seleccionando nuevo juego en la página de inicio y seleccionando tu límite de tiempo y categoría.  2. Decide qué jugador va primero y pídele que coloque el dispositivo contra su frente.  3. A continuación, los demás jugadores describen la palabra sin pronunciarla directamente.  4. Si adivinas la palabra correctamente, inclina el teléfono hacia arriba para recibir la palabra. Si no adivinas la palabra, inclina el teléfono hacia abajo para omitirla.  5. 5. Intenta adivinar tantas palabras como puedas antes de que se acabe el tiempo.     "</string>
+    <string name="category_name">Nombre de Categoría</string>
+    <string name="Catword_input">Ingrese la Palabra</string>
+    <string name="Catadd_button">Agregar</string>
+    <string name="createCat_button">Crear</string>
+    <string name="loginButton">Iniciar Sesión</string>
+    <string name="signup_button">Regístrate</string>
+    <string name="BackButton">Volver</string>
+    <string name="editPassword">Contraseña</string>
+    <string name="editEmail">Correo Electrónico</string>
+    <string name="back">Volver</string>
+    <string name="start_button">Empezar</string>
+    <string name="time_limit">Límite de Tiempo</string>
+    <string name="category_text">Categorías</string>
+    <string name="emailTextEdit">Correo Electrónico</string>
+    <string name="passwordTextEdit">Contraseña</string>
+    <string name="sign_upButton">Regístrate</string>
+    <string name="Back_Button">Volver</string>
+    <string name="deleteButton">Borrar</string>
+    <string name="word_text">La Voz</string>
+</resources>

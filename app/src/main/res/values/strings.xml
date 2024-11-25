@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">Heads Up Study</string>
+    <string name="backButton">Back</string>
+    <string name="headerText">Categories</string>
+    <string name="newCatButton">New</string>
+    <string name="gameWord" translatable="false">TextView</string>
+    <string name="gameBackButton">Back</string>
+    <string name="_00_00" translatable="false">00:00</string>
+    <string name="scoreText">Your Score:</string>
+    <string name="wordsStatus">Words Status</string>
+    <string name="streak_text">Your Streak:</string>
+    <string name="score_value" translatable="false">0</string>
+    <string name="streak_value" translatable="false">0</string>
+    <string name="back_button">Back to Main Menu</string>
+    <string name="editCategory_name">Category Name</string>
+    <string name="word_input">Enter word</string>
+    <string name="add_button">Add</string>
+    <string name="deleteCat_button">Delete</string>
+    <string name="saveCat_button">Save</string>
+    <string name="backbutton">Back</string>
+    <string name="login_button">Login</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="categories_button">Categories</string>
+    <string name="newGame_button">Start Game</string>
+    <string name="exit_button" translatable="false">X</string>
+    <string name="game_instructions">1. Start a new game by selecting new game in the homepage and selecting your time limit and category.\n 2. Decide which player goes first and have them place the device against their forehead.\n 3. The other players then describe the word without directly saying the word.\n 4. If you correctly guess the word, tilt the phone up to recieve the word. If you can\'t guess the word, tilt the phone down to skip it.\n 5. Try to guess as many words as possible before the time runs out.</string>
+    <string name="category_name">Category Name</string>
+    <string name="Catword_input">Enter word</string>
+    <string name="Catadd_button">Add</string>
+    <string name="createCat_button">Create</string>
+    <string name="loginButton">Login</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="BackButton">Back</string>
+    <string name="editPassword">Password</string>
+    <string name="editEmail">Email</string>
+    <string name="back">back</string>
+    <string name="start_button">Start</string>
+    <string name="time_limit">Time Limit</string>
+    <string name="category_text">Category</string>
+    <string name="emailTextEdit">Email</string>
+    <string name="passwordTextEdit">Password</string>
+    <string name="sign_upButton">Sign Up</string>
+    <string name="Back_Button">Back</string>
+    <string name="deleteButton">Delete</string>
+    <string name="word_text">Word</string>
 </resources>
