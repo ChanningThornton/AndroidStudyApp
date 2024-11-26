@@ -25,6 +25,7 @@
       <SelectionState runConfigName="LoginNavigationTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+
     </selectionStates>
   </component>
 </project>

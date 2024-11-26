@@ -34,6 +34,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
+mockito-core = { module = "org.mockito:mockito-core" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
