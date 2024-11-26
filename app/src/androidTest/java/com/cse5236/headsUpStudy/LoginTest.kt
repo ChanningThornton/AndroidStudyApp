@@ -17,7 +17,7 @@ import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 
 @RunWith(AndroidJUnit4::class)
-class InstructionsTextViewTest {
+class LoginActivityTest {
 
     @get:Rule
     var activityRule = ActivityScenarioRule(LoginActivity::class.java)
