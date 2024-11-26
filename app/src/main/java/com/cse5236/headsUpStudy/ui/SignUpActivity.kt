@@ -34,7 +34,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             R.id.signup_button -> {
                 val email = findViewById<EditText>(R.id.editTextUsername)
                 val password = findViewById<EditText>(R.id.editTextPassword)
-                signUpViewModel.signUp(email.text.toString(), password.text.toString())
+                signUpViewModel.signUp(email.text.toString(), password.text.toString(), this)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }

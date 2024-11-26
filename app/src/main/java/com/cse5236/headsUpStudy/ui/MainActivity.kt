@@ -7,17 +7,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cse5236.headsUpStudy.ModelView.FirebaseRepository
 import com.cse5236.headsUpStudy.R
 import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-
+    private val repository = FirebaseRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homepage)
-
-        Log.d("MainActivity", "onCreate called")
 
         val loginButton = findViewById<Button>(R.id.login_button)
         loginButton.setOnClickListener (this)

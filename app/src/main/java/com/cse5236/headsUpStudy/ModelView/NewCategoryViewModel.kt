@@ -12,6 +12,7 @@ class NewCategoryViewModel : ViewModel(), CategoryViewModel {
 
     private val _words = MutableLiveData<MutableList<String>>(mutableListOf())
     val words: MutableLiveData<MutableList<String>> get() = _words
+    private val repository = FirebaseRepository
 
     override fun addWord(word: String) {
         _words.value?.let {
@@ -36,6 +37,7 @@ class NewCategoryViewModel : ViewModel(), CategoryViewModel {
         Firebase.firestore.collection("categories")
             .add(category)
             .addOnSuccessListener {
+                repository.loadCategories()
                 Toast.makeText(context, "Category saved.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->

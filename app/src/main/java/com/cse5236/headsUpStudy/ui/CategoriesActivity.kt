@@ -41,9 +41,6 @@ class CategoriesActivity : AppCompatActivity(), View.OnClickListener {
             adapter.updateCategories(categoryList)
         }
 
-        FirebaseAuth.getInstance().currentUser?.uid?.let {
-            categoriesViewModel.loadCategory(it)
-        }
 
 
         val backButton = findViewById<Button>(R.id.back_button)

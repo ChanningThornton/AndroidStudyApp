@@ -45,9 +45,6 @@ class NewGameActivity : AppCompatActivity(), View.OnClickListener {
 
         timeSpinner.setSelection(selectedTimePosition)
 
-        FirebaseAuth.getInstance().currentUser?.uid?.let {
-            categoriesViewModel.loadCategory(it)
-        }
 
 
         Log.d("NewGameActivity", "onCreate called")

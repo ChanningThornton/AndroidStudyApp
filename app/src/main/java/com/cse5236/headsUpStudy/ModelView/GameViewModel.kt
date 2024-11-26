@@ -10,7 +10,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.firestore
 
 class GameViewModel: ViewModel() {
-
+    private val repository = FirebaseRepository
     private val _words = MutableLiveData<MutableList<String>>(mutableListOf())
     val words: MutableLiveData<MutableList<String>> get() = _words
 
@@ -18,14 +18,9 @@ class GameViewModel: ViewModel() {
     val streak: LiveData<Int> get() = _streak
 
     fun loadCategory(id: String?){
-        Firebase.firestore.collection("categories")
-            .document(id ?: "")
-            .get()
-            .addOnSuccessListener { item ->
-                val words = item.get("words") as? List<String>
-                _words.value = words?.toMutableList()
-
-            }
+        val document = repository.getCategory(id ?: "")
+        val words = document?.get("words") as? List<String>
+        _words.value = words?.toMutableList()
     }
 
     fun getStreak(userId: String){
