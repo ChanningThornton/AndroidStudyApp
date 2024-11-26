@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val email = findViewById<EditText>(R.id.editTextUsername)
                 val password = findViewById<EditText>(R.id.editTextTextPassword)
                 Log.d("login", email.text.toString());
-                loginViewModel.login(email.text.toString(), password.text.toString())
+                loginViewModel.login(email.text.toString(), password.text.toString(), this)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
